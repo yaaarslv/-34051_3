@@ -21,7 +21,6 @@
 | Функциональное требование | Агрегаты |
 | --- | --- |
 | “Гость” может направить запрос в систему, существует ли уже пользователь с переданным никнеймом и получить ответ в формате “true”/”false”  | User |
-| “Гость” может направить запрос в систему, существует ли уже пользователь с переданным никнеймом и получить ответ в формате “true”/”false” | User |
 | Пользователь может просматривать свои проекты | Project |
 | Пользователь может просматривать задачи в проекте | Task, Project |
 | Пользователь может просматривать список доступных статусов для задач | Status, Task, Project |
@@ -34,7 +33,7 @@
 | Создание нового проекта | Project | createProject(id, title, creatorId) | ProjectCreatedEvent | Да (список проектов) |
 | Создание новой задачи в проекте | Task, Project | createTask(id, title, projectId, assigneeId) | TaskCreatedEvent | Да (просмотр задач проекта) |
 | Обновление статуса задачи | Task, Status | updateTaskStatus(taskId, statusId) | TaskStatusUpdatedEvent | Да (список задач проекта, список доступных статусов) |
-| Удаление статуса из проекта | Status, Project | deleteStatus(statusId, projectId) | StatusDeletedEvent | Нет |
+| Удаление статуса из проекта | Status, Project, Task | deleteStatus(statusId, projectId) | StatusDeletedEvent, TaskStatusUpdatedEvent | Да (проверка использования в задачах) |
 
 ### Дополнительные функциональные требования
 
